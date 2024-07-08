@@ -7,7 +7,7 @@
 }
 
 body{
-  background-image: url('./assets/bg.jpg');
+  background-image: url('./assets/blue.png');
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,10 +16,10 @@ body{
 }
 
 .container{
-  width: 90vw;
+  width: 80vw;
   height: 90vh;
-  background-color: rgba(22, 22, 56, 0.759);
-  backdrop-filter: blur(19px) saturate(180%);
+  background-color: rgba(0, 4, 13, 0.569);
+  backdrop-filter: blur(8px) ;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.187);
   display: flex;
