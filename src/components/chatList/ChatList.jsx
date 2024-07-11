@@ -4,6 +4,7 @@ import search from '../../assets/search.png'
 import plus from '../../assets/plus.png'
 import minus from '../../assets/minus.png'
 import avatar from '../../assets/avatar.png'
+import AddUser from './addUser/AddUser'
 
 
 const ChatList = () => {
@@ -55,7 +56,7 @@ const ChatList = () => {
             <p>Hello</p>
         </div>
       </div>
-      
+      { addMode &&  <AddUser/> }
     </div>
   )
 }
