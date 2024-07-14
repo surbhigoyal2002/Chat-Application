@@ -5,13 +5,38 @@ import arrowUp from '../../assets/arrowUp.png'
 import arrowDown from '../../assets/arrowDown.png'
 import pic from '../../assets/pic.png'
 import download from '../../assets/download.png'
+import { auth, db } from '../../lib/firebase'
+import { useChatStore } from '../../lib/chatStore'
+import { useUserStore } from '../../lib/userStore'
+import { arrayUnion } from 'firebase/firestore'
+import { doc, updateDoc } from 'firebase/firestore'
 
 const Detail = () => {
+
+    const {chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock} = useChatStore();
+    const {currentUser} = useUserStore();
+
+    const handleBlock = async() => {
+        if(!user) return;
+
+        const userDocRef = doc(db, "users", currentUser.id)
+
+        try{
+            await updateDoc(userDocRef, {
+                blocked: isReceiverBlocked ? arrayremove(user.id) : arrayUnion(user.id)
+            });
+            changeBlock()
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
   return (
     <div className='detail'>
       <div className="user">
-          <img src={avatar} alt="" />
-          <h2>Alay Kabir</h2>
+          <img src={user?.image || avatar} alt="" />
+          <h2>{user?.username}</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
       <div className="info">
@@ -62,8 +87,12 @@ const Detail = () => {
                   <img src= {arrowUp} alt="" className='icon'/>
               </div>
           </div>
-          <button>Block User</button>
-          <button id='logout'>Logout</button>
+          <button onClick = {handleBlock}>{isCurrentUserBlocked
+            ? "You are Blocked!"
+            : isReceiverBlocked
+            ? "User blocked"
+            : "Block User"}</button>
+          <button id='logout' onClick= {() => auth.signOut()}>Logout</button>
       </div>
     </div>
   )

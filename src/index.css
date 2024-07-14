@@ -27,8 +27,8 @@ body{
 
 
 .loading{
-  padding: 50px;
-  font-size: 36px;
+  padding: 40px;
+  font-size: 34px;
   border-radius: 10px;
   background-color: rgba(17, 25, 40, 0.9);
 }
