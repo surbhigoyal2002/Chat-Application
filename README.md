@@ -1,8 +1,27 @@
-# React + Vite
+# Chat-Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Chat-Application is a real-time messaging platform where users can exchange messages, send photos, and block other users. This application leverages Firebase for backend services, including Firestore for database management and Firebase Authentication for user authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- **Real-Time Messaging**: Exchange messages with other users instantly.
+- **Photo Sharing**: Send and receive photos in chat.
+- **User Blocking**: Block other users to prevent them from sending messages.
+- **Search Contacts**: Easily find and add new contacts.
+- **User Authentication**: Secure authentication using Firebase Auth.
+
+## Tech Stack
+
+- **Frontend**: React.js, CSS
+- **Backend**: Firebase Firestore, Firebase Authentication
+- **State Management**: Zustand
+  
+## Usage
+
+1. **Sign Up / Sign In**: Create a new account or log in using your existing credentials.
+2. **Search and Add Contacts**: Use the search bar to find and add new contacts.
+3. **Chat**: Select a contact from your chat list to start exchanging messages and photos.
+4. **Block User**: Block any user from sending you messages by selecting the block option.
+
