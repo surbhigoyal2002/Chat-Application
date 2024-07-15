@@ -8,7 +8,7 @@ import download from '../../assets/download.png'
 import { auth, db } from '../../lib/firebase'
 import { useChatStore } from '../../lib/chatStore'
 import { useUserStore } from '../../lib/userStore'
-import { arrayUnion } from 'firebase/firestore'
+import { arrayUnion, arrayRemove } from 'firebase/firestore'
 import { doc, updateDoc } from 'firebase/firestore'
 
 const Detail = () => {
@@ -23,7 +23,7 @@ const Detail = () => {
 
         try{
             await updateDoc(userDocRef, {
-                blocked: isReceiverBlocked ? arrayremove(user.id) : arrayUnion(user.id)
+                blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id)
             });
             changeBlock()
         }
@@ -31,6 +31,11 @@ const Detail = () => {
             console.log(err);
         }
     }
+
+    const handleLogout = () => {
+        auth.signOut();
+        resetChat()
+      };
 
   return (
     <div className='detail'>
@@ -92,7 +97,7 @@ const Detail = () => {
             : isReceiverBlocked
             ? "User blocked"
             : "Block User"}</button>
-          <button id='logout' onClick= {() => auth.signOut()}>Logout</button>
+          <button id='logout' onClick={handleLogout} >Logout</button>
       </div>
     </div>
   )
